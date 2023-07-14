@@ -1,0 +1,102 @@
+<! DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Media Registration Page</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<style>
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+}
+
+.global-container {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #f5f5f5;
+}
+
+form {
+	padding-top: 10px;
+	font-size: 14px;
+	margin-top: 30px;
+}
+
+.card-title {
+	font-weight: 300;
+}
+
+.btn {
+	font-size: 14px;
+	margin-top: 20px;
+}
+
+.login-form {
+	width: 330px;
+	margin: 20px;
+}
+
+.sign-up {
+	text-align: center;
+	padding: 20px 0 0;
+}
+
+.alert {
+	margin-bottom: -30px;
+	font-size: 13px;
+	margin-top: 20px;
+}
+</style>
+<body>
+	<p th:text="${failed}"></p>
+	<p th:text="${success}"></p>
+	<div class="pt-5">
+		<div class="global-container">
+			<div class="card login-form">
+				<div class="card-body">
+					<h3 class="card-title text-center" style="color: orange;">Media Member
+						Update Form</h3>
+					<div class="card-text">
+						<form action="#" th:action="@{/media/update/{id}(id=${media.id})}" th:object="${media}" method="post">
+							<div class="form-group">
+								<label for="exampleInputEmail1"> Enter Email address </label> <input th:field="*{email}"
+									type="email" class="form-control form-control-sm"
+									id="exampleInputEmail1" aria-describedby="emailHelp"
+									name="email">
+							</div>
+
+							<div class="form-group">
+								<label for="exampleInputEmail1"> Enter Location </label> <input th:field="*{location}"
+									type="text" class="form-control form-control-sm"
+									id="exampleInputEmail1" aria-describedby="emailHelp"
+									name="location">
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1"> Enter Name </label> <input th:field="*{name}"
+									type="text" class="form-control form-control-sm"
+									id="exampleInputEmail1" aria-describedby="emailHelp"
+									name="name">
+							</div>
+							<div class="form-group">
+								<label for="exampleInputPassword1">Enter Phone Number </label> <input th:field="*{number}"
+									type="number" class="form-control form-control-sm"
+									id="exampleInputPassword1" name="number">
+							</div>
+							<button type="submit" class="btn btn-primary btn-block">
+								Update Form</button>
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

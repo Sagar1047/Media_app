@@ -1,0 +1,141 @@
+<! DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Media Registration Page</title>
+<script>
+	function validationForm() {
+		var email = document.forms["myForm"]["email"].value;
+		var location = document.forms["myForm"]["location"].value;
+		var name = document.forms["myForm"]["name"].value;
+		var number = document.forms["myForm"]["number"].value;
+
+		var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		if (!email.match(emailRegex)) {
+			alert("Invalid email Id..");
+			return false;
+		}
+		
+		if (location.length < 10) {
+			alert("location must be at least 6 characters long");
+			return false;
+		}
+		
+		if (name == "") {
+			alert("Name must be filled out");
+			return false;
+		}
+
+		if (name.length < 6) {
+			alert("name must be at least 6 characters long");
+			return false;
+		}
+
+		var phoneRegex = /^\d{10}$/;
+		if (!number.match(phoneRegex)) {
+			alert("Invalid phone number..");
+			return false;
+		}
+
+		return true;
+
+	}
+</script>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<style>
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+}
+
+.global-container {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #f5f5f5;
+}
+
+form {
+	padding-top: 10px;
+	font-size: 14px;
+	margin-top: 30px;
+}
+
+.card-title {
+	font-weight: 300;
+}
+
+.btn {
+	font-size: 14px;
+	margin-top: 20px;
+}
+
+.login-form {
+	width: 330px;
+	margin: 20px;
+}
+
+.sign-up {
+	text-align: center;
+	padding: 20px 0 0;
+}
+
+.alert {
+	margin-bottom: -30px;
+	font-size: 13px;
+	margin-top: 20px;
+}
+</style>
+<body>
+	<p th:text="${failed}"></p>
+	<p th:text="${fail}"></p>
+	<div class="pt-5">
+		<div class="global-container">
+			<div class="card login-form">
+				<div class="card-body">
+					<h3 class="card-title text-center" style="color: orange;">Media
+						Registration Form</h3>
+					<div class="card-text">
+						<form method="post" action="/savedata" name="myForm"
+							onsubmit="return validationForm()">
+							<div class="form-group">
+								<label for="exampleInputEmail1"> Enter Email address </label> <input
+									type="email" class="form-control form-control-sm"
+									id="exampleInputEmail1" aria-describedby="emailHelp"
+									name="email">
+							</div>
+
+							<div class="form-group">
+								<label for="exampleInputEmail1"> Enter Location </label> <input
+									type="text" class="form-control form-control-sm"
+									id="exampleInputEmail1" aria-describedby="emailHelp"
+									name="location">
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1"> Enter Name </label> <input
+									type="text" class="form-control form-control-sm"
+									id="exampleInputEmail1" aria-describedby="emailHelp"
+									name="name">
+							</div>
+							<div class="form-group">
+								<label for="exampleInputPassword1">Enter Phone Number </label> <input
+									type="number" class="form-control form-control-sm"
+									id="exampleInputPassword1" name="number">
+							</div>
+							<button type="submit" class="btn btn-primary btn-block">
+								Register</button>
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
